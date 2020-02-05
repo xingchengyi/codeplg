@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}{{ info['username'] }}的空间{% endblock %}</h1>
+    {% if g.user['id'] == id %}
+        <a class="action" href="{{ url_for('auth.update_user',id = id) }}">更改信息</a>
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <br>
+    <div>用户名：{{ info['username'] }}</div>
+    <br>
+    {% if g.user['id'] == id %}
+        <div>真实姓名：{{ info['realname'] }}</div>
+        <br>
+    {% endif%}
+    <div>个人介绍：{{ info['brief'] }}</div>
+{% endblock %}

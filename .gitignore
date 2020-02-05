@@ -1,0 +1,6 @@
+.idea
+__pycache__
+instance
+test
+venv
+flaskr/__pycache__

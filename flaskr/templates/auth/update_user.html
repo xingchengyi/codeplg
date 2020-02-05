@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}更改信息{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+      <label for="username">用户名</label>
+    <input name="username" id="username" value="{{ request.form['username'] }}">
+      <label for="old_password">旧密码</label>
+    <input type="password" name="old_password" id="old_password"  value="{{ request.form['old_password'] }}" required>
+      <label for="new_password">新密码</label>
+    <input type="password" name="new_password" id="new_password" value="{{ request.form['new_password'] }}">
+      <label for="realname">真实姓名</label>
+    <input name="realname" id="realname"  value="{{ request.form['realname'] }}">
+      <label for="brief">个人介绍</label>
+    <textarea name="brief" id="brief"></textarea>
+      <input type="submit" value="提交">
+  </form>
+{% endblock %}

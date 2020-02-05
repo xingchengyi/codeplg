@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}Admin Page{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+  <form method="post">
+    <label for="order">想要查询什么</label>
+    <input name="order" id="order" required>
+    <input type="submit" value="查询">
+  </form>
+{% if answer %}
+<table border="1">
+    <th>User</th>
+    <th>Type</th>
+    <th>Value</th>
+    {% for ans in answer%}
+    <tr>
+        {% for an in ans %}
+        <td>{{ an }}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock %}

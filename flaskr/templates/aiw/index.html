@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}All is Well{% endblock %}</h1>
+{% endblock %}
+
+
+
+{% block content %}
+<script>
+    function clickalert()
+    {
+        alert("提交成功");
+    }
+</script>
+<form method="post">
+    <label for="well">完全没事</label>
+    <input name="check" id="well" checked="checked" type="radio" value="well" >
+    <!--<br>-->
+    <label for="issue">有点咳嗽</label>
+    <input name="check" id="issue" type="radio" value="NOTWELL">
+    <input type="submit" onclick="clickalert()" value="提交">
+</form>
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}上传event{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<form method="post">
+    <label for="title">type:</label>
+    <input name="type" id="title"  required>
+    <label for="body">value:</label>
+    <textarea name="value" id="body"></textarea>
+    <input type="submit" value="提交">
+</form>
+{% endblock %}

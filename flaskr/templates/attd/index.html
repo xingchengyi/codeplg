@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title%}签到{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+<script>
+    function clickalert(a)
+    {
+        if(a == 0)
+            alert("签到成功");
+        else
+            alert("签退成功");
+    }
+</script>
+<form method="post">
+    {% if status == 0 %}
+        <label for="title">{{time}}</label>
+        <input type = "submit" onclick="clickalert(0)" value = "签到">
+    {% endif %}
+
+    {% if status == 1%}
+        <label for="title">{{time}}</label>
+        <input type="submit" onclick="clickalert(1)" value="签退">
+    {% endif %}
+</form>
+{% endblock%}
