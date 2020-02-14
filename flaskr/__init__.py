@@ -55,4 +55,8 @@ def create_app(test_config=None):
     def strftime_to_localtime(t):
         return time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(t.timestamp()+28800))
     app.add_template_global(strftime_to_localtime)
+
+    with app.app_context():
+        from . import daily
+        app.register_blueprint(daily.bp)
     return app

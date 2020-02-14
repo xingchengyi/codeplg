@@ -16,9 +16,13 @@ def index():
         ' FROM post p JOIN user u ON p.author_id = u.id'
         ' ORDER BY created DESC'
     ).fetchall()
+    post_list = []
+    for post in posts:
+        if post['title'][0:6] != '#DAILY':
+            post_list.append(post)
     # for post in posts:
     #     post['created'] = datetime.fromtimestamp(post['created'].timestamp())
-    return render_template('blog/index.html', posts=posts)
+    return render_template('blog/index.html', posts=post_list)
 
 @bp.route('/p/create', methods=('GET', 'POST'))
 @login_required

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}每日打卡{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+
+<body>
+    <h1>每日打卡转移到这里了QwQ</h1>
+    <form method="post" enctype="multipart/form-data">
+        <h2>{{ form.flu.label }}</h2>
+        <table><tr>
+        {% for subfield in form.flu %}
+            <td>{{ subfield.label }} {{ subfield }} </td>
+        {% endfor %}
+        </tr></table>
+        <h2>{{ form.description.label }}</h2>
+        {{ form.description() }}
+        <h2>{{ form.photo.label }}</h2>
+        {{ form.photo(multiple="multiple") }}
+        {% for error in form.photo.errors %}
+            <span style="color: red;">{{ error }}</span>
+        {% endfor %}
+        {{ form.submit() }}
+        {{ form.hidden_tag() }}
+    </form>
+    {% if img_list %}
+        {% for img_url in img_list %}
+        <img src="{{ img_url }}" />
+        {% endfor %}
+    {% endif %}
+</body>
+
+{% endblock %}
