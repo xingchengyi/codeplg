@@ -53,7 +53,7 @@ def create_app(test_config=None):
     app.register_blueprint(alliswell.bp)
     from . import profile
     app.register_blueprint(profile.bp)
-    
+
     def strftime_to_localtime(t):
         return time.strftime('%Y-%m-%d %H:%M:%S',time.localtime(t.timestamp()+28800))
     app.add_template_global(strftime_to_localtime)

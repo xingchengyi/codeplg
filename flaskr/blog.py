@@ -18,7 +18,7 @@ def index():
     ).fetchall()
     post_list = []
     for post in posts:
-        if post['title'][0:6] != '#DAILY' and post['title'][0:8] != "#PROFILE#":
+        if post['title'][0:6] != '#DAILY' and post['title'][0:9] != "#PROFILE#":
             post_list.append(post)
     # for post in posts:
     #     post['created'] = datetime.fromtimestamp(post['created'].timestamp())
