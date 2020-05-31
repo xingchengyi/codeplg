@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+<!--{% extends 'base.html' %}-->
 
 {% block header %}
   <h1>{% block title %}个人介绍{% endblock %}</h1>
@@ -8,8 +8,11 @@
 {% endblock %}
 
 {% block content %}
-  <div>{{ profile['body'] }}</div>
-  <header>
-    <div class = "about">最后一次更新在{{ strftime_to_localtime(profile['created']) }}</div>
-  </header>
+    <article class="post">
+      <div>{{ profile['body'] }}</div>
+      <header>
+        <div class = "about">最后一次更新于 {{ strftime_to_localtime(profile['created']) }}</div>
+      </header>
+    </article>
+
 {% endblock %}
