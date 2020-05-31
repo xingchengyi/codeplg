@@ -11,7 +11,7 @@ def index():
     db = get_db()
     profile = db.execute(
         'SELECT id,title,body,created'
-        ' FROM post WHERE title = '#PROFILE#''
+        ' FROM post WHERE title = ?',('#PROFILE#',)
     ).fetchone()
     return render_template('profile/index.html',profile=profile)
 
