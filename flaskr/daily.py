@@ -4,15 +4,18 @@ from flask import (
 )
 from flaskr.auth import login_required
 from flaskr.db import get_db
-from flask_uploads import UploadSet,IMAGES
-from flask_uploads import configure_uploads,patch_request_class
 import os
-from flask import current_app as app
-from flask_wtf import FlaskForm
-from flask_wtf.file import FileField,FileRequired,FileAllowed
-from wtforms import SubmitField,MultipleFileField,TextAreaField,RadioField
 from PIL import Image
 import random,string
+
+from flask_uploads import UploadSet,IMAGES
+from flask_uploads import configure_uploads,patch_request_class
+from flask_wtf import FlaskForm
+
+from flask_wtf.file import FileField,FileRequired,FileAllowed
+from wtforms import SubmitField,MultipleFileField,TextAreaField,RadioField
+from flask import current_app as app
+
 from werkzeug.datastructures import FileStorage
 from wtforms.validators import DataRequired, StopValidation
 from flask_wtf.file import abc
@@ -50,7 +53,6 @@ def index():
 class MultiFileAllowed(FileAllowed):
     def __call__(self, form, field):
         if not field.data:
-            print("POS0")
             return
         for d in field.data:
             if not isinstance(d,FileStorage):
@@ -60,9 +62,7 @@ class MultiFileAllowed(FileAllowed):
         for f in form.data['photo']:
             filename = f.filename.lower()
             if isinstance(self.upload_set, abc.Iterable):
-                print("POS4")
                 if any(filename.endswith('.' + x) for x in self.upload_set):
-                    print("pos validate")
                     return
 
                 raise StopValidation(self.message or field.gettext(

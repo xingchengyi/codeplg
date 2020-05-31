@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  <h1>{% block title %}个人介绍{% endblock %}</h1>
+  {% if g.user['username'] == 'admin' %}
+    <a class="action" href="{{ url_for('blog.update,id=profile['id']') }}">更新一下</a>
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+  <div>{{ profile['body'] }}</div>
+  <header>
+    <div class = "about">最后一次更新在{{ strftime_to_localtime(profile['created']) }}</div>
+  </header>
+{% endblock %}
